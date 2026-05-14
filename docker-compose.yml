@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  maru-engine:
+    build: 
+      context: ./engine
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://maru:marupass@postgres:5432/marudb
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - MARU_API_SECRET=${MARU_API_SECRET:-change-me-in-production}
+      - JUDGE_MODEL=${JUDGE_MODEL:-gpt-4o}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL:-}
+      - DRIFT_ALERT_THRESHOLD=${DRIFT_ALERT_THRESHOLD:-85.0}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=maru
+      - POSTGRES_PASSWORD=marupass
+      - POSTGRES_DB=marudb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U maru"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:

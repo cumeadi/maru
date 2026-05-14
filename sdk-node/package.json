@@ -1,0 +1,17 @@
+{
+  "name": "@maru/sdk",
+  "version": "0.1.0",
+  "description": "Maru Node.js SDK",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^1.16.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
