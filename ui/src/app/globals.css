@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Airtable-inspired Design Tokens ─────────────────────────────────────── */
+
+  /* Font */
+  --font-sans: var(--font-inter), -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+
+  /* Core colours */
+  --color-theme-navy:       #181d26;
+  --color-theme-blue:       #1b61c9;
+  --color-theme-blue-mid:   #254fad;
+  --color-theme-blue-light: rgba(27, 97, 201, 0.08);
+  --color-theme-white:      #ffffff;
+  --color-theme-surface:    #f8fafc;
+  --color-theme-border:     #e0e2e6;
+
+  /* Text hierarchy */
+  --color-theme-text:       #181d26;
+  --color-theme-text-weak:  rgba(4, 14, 32, 0.55);
+  --color-theme-text-muted: rgba(4, 14, 32, 0.38);
+
+  /* Semantic */
+  --color-theme-success:    #006400;
+  --color-theme-warning:    #b45309;
+  --color-theme-danger:     #b91c1c;
+
+  /* Radius */
+  --radius-sm:   2px;
+  --radius-btn:  12px;
+  --radius-card: 16px;
+  --radius-lg:   24px;
+}
+
+/* ── Global resets ─────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-theme-white);
+  color: var(--color-theme-text);
+  letter-spacing: 0.08px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Design-system utilities ───────────────────────────────────────────────── */
+
+/* Card */
+.airtable-card {
+  background: #ffffff;
+  border: 1px solid #e0e2e6;
+  border-radius: 16px;
+  box-shadow:
+    rgba(0,0,0,0.32) 0px 0px 1px,
+    rgba(0,0,0,0.08) 0px 0px 2px,
+    rgba(45,127,249,0.28) 0px 1px 3px,
+    rgba(0,0,0,0.06) 0px 0px 0px 0.5px inset;
+}
+
+/* Soft ambient card (lighter) */
+.airtable-card-soft {
+  background: #ffffff;
+  border: 1px solid #e0e2e6;
+  border-radius: 16px;
+  box-shadow: rgba(15,48,106,0.05) 0px 0px 20px;
+}
+
+/* Surface (tinted white section) */
+.airtable-surface {
+  background: #f8fafc;
+  border: 1px solid #e0e2e6;
+  border-radius: 16px;
+}
+
+/* Primary button */
+.btn-primary {
+  background: #1b61c9;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 10px 24px;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.08px;
+  line-height: 1.28;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+.btn-primary:hover {
+  background: #254fad;
+  box-shadow: rgba(27,97,201,0.25) 0px 4px 12px;
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Secondary / ghost button */
+.btn-secondary {
+  background: #ffffff;
+  color: #181d26;
+  border-radius: 12px;
+  padding: 10px 24px;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.08px;
+  border: 1px solid #e0e2e6;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-secondary:hover {
+  background: #f8fafc;
+  border-color: #1b61c9;
+  box-shadow: rgba(27,97,201,0.1) 0px 2px 8px;
+}
+
+/* Tag / badge */
+.airtable-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16px;
+  border: 1px solid;
+}
+
+/* Section label */
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.28px;
+  text-transform: uppercase;
+  color: rgba(4,14,32,0.38);
+}
